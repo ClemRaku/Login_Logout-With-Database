@@ -19,14 +19,17 @@ def index(request):
     submitted_email = request.GET.get("email")
     submitted_passwd = request.GET.get("passwd")
     
-    for a in users_and_passwd:
-        if a[0] == submitted_email and a[1] == submitted_passwd:
+    for a in users_and_passwd:#a is basically just (email, passwd)
+        
+        int_passwd = a[1]
+        string_passwd = str(int_passwd)
+        if a[0] == submitted_email and string_passwd == submitted_passwd:
             return redirect('result')
-        else:
-            context = {'error_msg' : 'Invalid Password or Email'}
-            return render(request, 'index.html', context)
+        
+    context = {'error_msg' : 'Invalid Password or Email'}
+    return render(request, 'index.html', context)
 
 def result_page(request):
     return render(request, 'result.html')
-    
+
 # Create your views here.
