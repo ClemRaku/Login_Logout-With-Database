@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic Input Form</title>
+</head>
+<body>
+
+    {% if error_message %}
+        <p>{{error_message}}</p>
+    {% endif %}
+    <form method="GET" action="{% url 'index' %}">
+        {% comment %} goes back to the index function in the view.py file. {% endcomment %}
+        <!-- Email Input -->
+        <label for="user_email">Email:</label>
+        <input type="email" id="user_email" name="email">
+        <h1>Total price is </h1>
+        <br><br>
+        
+        <!-- Password Input -->
+        <label for="user_password">Password:</label>
+        <input type="password" id="user_password" name="passwd">
+        
+        <br><br>
+        
+        <button type="submit">Log In</button>
+    </form>
+</body>
+</html>
